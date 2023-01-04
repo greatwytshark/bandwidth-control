@@ -1,0 +1,22 @@
+<div *ngIf="isLoginError" class="red-text center error-message">
+    <i class="material-icons">error</i> Incorrect username or password
+</div>
+<form class="col s12 white" [formGroup]="formGroup" (ngSubmit)="loginProcess()">
+    <div class="row">
+        <div class="input-field col s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input type="text" placeholder="Username / email" formControlName="username" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <i class="material-icons prefix">vpn_key</i>
+            <input type="password" placeholder="Password" formControlName="password" required>
+        </div>
+    </div>
+    <div class="row center  ">
+        <div class="input-field col s12 container-fluid">
+            <button class="btn-large btn-submit" type="submit">Login</button>
+        </div>
+    </div>
+</form>

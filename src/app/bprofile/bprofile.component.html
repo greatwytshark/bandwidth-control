@@ -1,0 +1,65 @@
+<div class="row" id="main-container">
+    <div class="col s11">
+        <div class="card horizontal">
+
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h4>
+                    <p>{{passedName}} <span style="float: right; color: seagreen; font-size: 20px;">
+                        <button class="btn btn-primary" (click)="changeBcpStatus(passedStatus)">
+                            Restricted: {{passedStatus}}</button></span></p>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s1" style="padding-top: 1%;">
+        <button class="waves-effect waves-light btn modal-trigger" data-target="addWebpModal">Add</button>
+    </div>
+
+    
+    <span >
+        <div class="card col s2" *ngFor="let item of retrieveBcp" style="margin-left: 15px;">
+
+            <div class="card-content">
+                <span class="card-title teal-text text-darken-1">{{item.domain}}</span>
+                <p class="teal-text text-darken-1"> <strong><button
+                            class="btn btn-primary" (click)="updatestatus(item.id, item.active)">Restricted:{{item.active}}</button></strong></p>
+                
+
+
+            </div>
+        </div>
+    </span>
+
+    <div id="addWebpModal" class="modal">
+        <div class="modal-content">
+            <h4>Add Website Profile</h4>
+
+            <div class="row">
+                <form class="col s12" #addForm="ngForm"  (ngSubmit)="onAddDomain(addForm)">
+
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="product-name" type="text" class="validate" ngModel name="domain" required>
+                            <label for="product-name">Domain</label>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button class="modal-close waves-effect grey darken-1 btn" type="submit">Cancel</button>
+                        <button [disabled]="addForm.invalid" class="modal-close waves-effect waves-green btn"
+                            type="submit">Add
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

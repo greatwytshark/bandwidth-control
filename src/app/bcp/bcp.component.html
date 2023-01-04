@@ -1,0 +1,77 @@
+
+
+<div class="row" id="main-container">
+    <button class="waves-effect waves-light btn modal-trigger" data-target="addBcpModal" style="margin: 5px; margin-left: 13px;">Add BCP</button>
+
+
+    <div class="row">
+        <div class="col s12">
+            <div class="card col s3  teal darken-1" *ngFor="let bprofile of bprofiles" style="margin: 2px;">
+                <div class="card-content white-text" >
+                    
+                <span class="card-title"><h4>{{bprofile.name}}</h4></span><span>Restricted: {{bprofile.active}}</span>
+                <span style="float: right;">{{bprofile.throttledMBps}} Mbps</span>
+                    
+                </div>
+                <div class="card-action">
+                    <a [routerLink]="['/webprofiles',bprofile.id, bprofile.active, bprofile.name]">Domains</a>
+                    <a (click)="changeBcpStatus(bprofile.active, bprofile.id)" style="cursor: pointer;">Change Status</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+   <!-- <div class="col s6">
+        <div class="bprofilelist">
+            <a [routerLink]="['/webprofiles',bprofile.id, bprofile.active, bprofile.name]" *ngFor="let bprofile of bprofiles">
+            <h5>{{bprofile.name}}<span style="padding: 2%;" (click)="changeBcpStatus(bprofile.active, bprofile.id)"><a>Restricted: {{bprofile.active}}</a></span>
+                <span style="float: right; color: red;">{{bprofile.throttledMBps}} MBps</span></h5>
+            </a>
+            <button class="waves-effect waves-light btn modal-trigger" data-target="addBcpModal">Add BCP</button>
+        </div>
+    </div>-->
+    <div class="col s8">
+        <div class="webprofiles">
+            <div class="row">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+
+    <!--Add BCP-->
+    <div id="addBcpModal" class="modal">
+        <div class="modal-content">
+            <h4>Add BCP</h4>
+            
+            <div class="row">
+                <form class="col s12" #addForm="ngForm" (ngSubmit)="onAddBcp(addForm)">
+            
+            
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="product-name" type="text" class="validate" ngModel name="name" required>
+                            <label for="product-name">Profile Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="price" type="text" class="validate" ngModel name="throttledMBps" required>
+                            <label for="throttledMBps">Mbps</label>
+                        </div>
+                    </div>
+            
+                    <div class="modal-footer">
+                        <button class="modal-close waves-effect grey darken-1 btn" type="submit">Cancel</button>
+                        <button [disabled]="addForm.invalid" class="modal-close waves-effect waves-green btn" type="submit">Add
+                            BCP</button>
+                    </div>
+            
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
