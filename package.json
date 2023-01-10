@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 { 
   "homepage": "https://greatwytshark.github.io/bandwidth-control",
+=======
+{
+  "homepage" : "https://greatwytshark.github.io/bandwidth-control",
+>>>>>>> 0bd2468c7809cffd1d4fb27399316640d65ae531
   "name": "bandwidth-control",
   "version": "0.0.0",
   "scripts": {
